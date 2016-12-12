@@ -9,10 +9,12 @@ class UsersController extends AppController {
 		parent::beforeFilter();
 		// ユーザー自身による登録とログアウトを許可する
 		$this->Auth->allow('add', 'login', 'index');
+		$this->set('auth', $this->Auth->user());
 	}
 
 	public function index() {
-
+		$data = $this->User->getUserList();
+		$this->set('data', $data);
 	}
 
 	public function view($id) {

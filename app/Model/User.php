@@ -30,4 +30,14 @@ class User extends AppModel {
 		}
 		return true;
 	}
+
+	public function getUserList(){
+		$data = $this->find('all', array(
+				'fields' => array(
+					'User.id',
+					'User.username'
+				)
+		));
+		return $data;
+	}
 }
